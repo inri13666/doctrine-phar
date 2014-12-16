@@ -8,9 +8,10 @@ $library = "doctrine";
 $filename = dirname(__FILE__) . DS . 'compiled' . DS . $library;
 
 //For Phar Version I Use The Version Of The Doctrine Common Component
-require_once implode(DS,array(dirname(__FILE__) , 'libs' , 'Doctrine' , 'Common')) . DS . 'Version.php';
+//require_once implode(DS,array(dirname(__FILE__) , 'libs' , 'Doctrine' , 'Common')) . DS . 'Version.php';
+require_once implode(DS, array(dirname(__FILE__), 'vendor', 'autoload.php'));
 
-if(!class_exists('Doctrine\Common\Version',false)){
+if (!class_exists('Doctrine\Common\Version')) {
     throw new Exception(__LINE__ . " : error");
 }
 
@@ -33,7 +34,7 @@ if (is_readable($filename)) {
 }
 
 $archive = new Phar($filename . '.phar', 0, ucwords($library));
-$archive->buildFromDirectory('libs');
+$archive->buildFromDirectory('vendor');
 $bootstrap = file_get_contents(dirname(__FILE__) . DS . 'phar-bootstrap.php');
 $archive->setStub($bootstrap);
 $archive = null;

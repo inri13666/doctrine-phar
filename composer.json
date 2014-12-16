@@ -1,0 +1,17 @@
+{
+    "name"             : "inri13666/dbal-phar",
+    "description"      : "Doctrine's DBAL in a PHAR",
+    "minimum-stability": "stable",
+    "license"          : "GPL",
+    "authors"          : [
+        {
+            "name" : "Nikita Makarov",
+            "email": "mesaverde228@gmail.com"
+        }
+    ],
+    "require"          : {
+        "php"          : ">=5.3",
+        "doctrine/dbal": "2.5.0",
+        "doctrine/orm" : "~2.4"
+    }
+}

@@ -5,6 +5,8 @@
  * Time  : 7:32 PM
  * E-Mail: nikita.makarov@effective-soft.com
  */
+use Doctrine\DBAL\Driver\ServerInfoAwareConnection;
+
 $doctrine_path = implode(DIRECTORY_SEPARATOR, array(dirname(dirname(__FILE__)), 'compiled')) . DIRECTORY_SEPARATOR . 'doctrine.';
 
 if (extension_loaded('bz2')) {
@@ -33,6 +35,9 @@ $config->setResultCacheImpl($cache);
 
 $conn = \Doctrine\DBAL\DriverManager::getConnection($db, $config);
 new \Doctrine\DBAL\Cache\QueryCacheProfile(0, "some key", $cache);
+var_dump($conn->getWrappedConnection()->getServerVersion());
+//var_dump($conn);die();
+//echo ("Server Version\t:\t" . $conn->getWrappedConnection()->getServerVersion()) . PHP_EOL;
 
 $queryBuilder = $conn->createQueryBuilder();
 $t = microtime(true);
